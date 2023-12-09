@@ -1,0 +1,11 @@
+D:\Final_Project\ENotes\ENote.Shared\bin\Debug\net8.0\ENote.Shared.deps.json
+D:\Final_Project\ENotes\ENote.Shared\bin\Debug\net8.0\ENote.Shared.dll
+D:\Final_Project\ENotes\ENote.Shared\bin\Debug\net8.0\ENote.Shared.pdb
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ENote.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ENote.Shared.AssemblyInfoInputs.cache
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ENote.Shared.AssemblyInfo.cs
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ENote.Shared.csproj.CoreCompileInputs.cache
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ENote.Shared.dll
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\refint\ENote.Shared.dll
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ENote.Shared.pdb
+D:\Final_Project\ENotes\ENote.Shared\obj\Debug\net8.0\ref\ENote.Shared.dll

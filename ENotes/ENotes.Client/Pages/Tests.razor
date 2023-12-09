@@ -1,0 +1,84 @@
+﻿@page "/tests"
+@rendermode InteractiveWebAssembly
+@using ENote.Shared
+@using ENotes.Client.Services.Contracts
+@using Microsoft.AspNetCore.Authorization
+@inject ITestService testservice
+@attribute [Authorize]
+
+
+
+<PageTitle>Tests</PageTitle>
+Client:@onclient    
+<h1>Tests</h1>
+
+<table class="table">
+    <thead>
+        <th>Id</th>
+        <th>Author</th>
+        <th>Create Date</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Edit</th>
+    </thead>
+    <tbody>
+        @foreach(var test in tests)
+        {
+            <tr>
+                <td>@test.Id</td>
+                <td>@test.Author</td>
+                <td>@test.CreatedDate</td>
+                <td>
+                    <input @bind="test.Title" />
+                </td>
+                <td>
+                    <textarea @bind="test.Description"></textarea>
+                </td>
+                <td>
+                    <button disabled="@buttonsdisabled" @onclick="@(e=>OnClickUpdate(test))">Update</button>
+                    <button disabled="@buttonsdisabled" @onclick="@(e=>OnclickDelete(test))">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <div>Title</div>
+    <div><input @bind="title" /></div>
+    <div>Description</div>
+    <div><textarea @bind="description" /></div>
+    <div><button disabled="@buttonsdisabled" @onclick="OnClickAdd">Add</button></div>
+</div>
+
+@code {
+    private bool onclient = false;
+    private bool buttonsdisabled = !true;
+    private string description = "";
+    private string title = "";
+    private List<TestDTO> tests = new List<TestDTO>();
+
+    private async Task OnclickDelete(TestDTO test)
+    {
+        await testservice.DeleteTest(test.Id);
+        tests = await testservice.GetTests();
+    }
+    private async Task OnClickUpdate(TestDTO test)
+    {
+        await testservice.UpdateTest(test);
+    }
+    private async Task OnClickAdd()
+    {
+        TestDTO newtest = new TestDTO();
+        newtest.Title = title;
+        newtest.Description = description;
+        string id = await testservice.AddTest(newtest);
+        tests = await testservice.GetTests();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        onclient = testservice.OnClient();
+        if(onclient)
+            tests = await testservice.GetTests();     
+        // buttonsdisabled = !onclient;      
+    }
+}
